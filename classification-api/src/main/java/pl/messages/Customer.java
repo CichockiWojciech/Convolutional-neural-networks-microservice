@@ -26,21 +26,21 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "age=" + age + "\n" +
-                "job='" + job + "\n" +
-                "martial='" + martial + "\n" +
-                "education='" + education + "\n" +
-                "creditDefault='" + creditDefault + "\n" +
-                "balance=" + balance + "\n" +
-                "housing='" + housing + "\n" +
-                "loan='" + loan + "\n" +
-                "contact='" + contact + "\n" +
-                "day='" + day + "\n" +
-                "month='" + month + "\n" +
-                "duration=" + duration + "\n" +
-                "campaign=" + campaign + "\n" +
-                "pdays=" + pdays + "\n" +
-                "previous=" + previous + "\n" +
-                "poutcome='" + poutcome;
+        return age + "\n" +
+                job + "\n" +
+                martial + "\n" +
+                education + "\n" +
+                creditDefault + "\n" +
+                balance + "\n" +
+                housing + "\n" +
+                loan + "\n" +
+                contact + "\n" +
+                day + "\n" +
+                month + "\n" +
+                duration + "\n" +
+                campaign + "\n" +
+                pdays + "\n" +
+                previous + "\n" +
+                poutcome;
     }
 }
