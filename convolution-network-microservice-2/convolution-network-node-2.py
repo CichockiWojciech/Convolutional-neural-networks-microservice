@@ -29,10 +29,12 @@ client_channel.queue_bind(queue=client_queue, exchange=client_exchange, routing_
 
 def callback(ch, method, properties, body):
     response = body.decode("utf-8")
-    # network
-    new_model_2 = load_model('my_model2.h5')
-    # output = new_model_2.predict(z)
-    client_channel.basic_publish(exchange=client_exchange, routing_key='', body='Yes/No')
+    attributes = consumer_mapping(response)
+    model = load_model('my_model2.h5')
+    z = np.array(attributes).astype(float)
+    z = np.expand_dims(z, axis=0)
+    pred_target = model.predict(z)
+    client_channel.basic_publish(exchange=client_exchange, routing_key='', body=pred_target)
 
 
 server_channel.basic_consume(
