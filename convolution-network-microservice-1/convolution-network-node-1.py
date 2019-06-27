@@ -1,6 +1,8 @@
 import pika
 
 # config
+from keras.engine.saving import load_model
+
 server_exchange = 'server-exchange'
 client_exchange = 'client-exchange'
 server_queue = 'server-queue-1'
@@ -28,6 +30,12 @@ client_channel.queue_bind(queue=client_queue, exchange=client_exchange, routing_
 def callback(ch, method, properties, body):
     response = body.decode("utf-8")
     # network
+    # z = np.array([1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1]).astype(float)
+    # z = np.expand_dims(z, axis=0)
+    new_model_1 = load_model('my_model1.h5')
+    #output = new_model_1.predict(z)
+
+
     client_channel.basic_publish(exchange=client_exchange, routing_key='', body='Yes/No')
 
 
