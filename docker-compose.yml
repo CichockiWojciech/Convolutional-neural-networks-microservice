@@ -1,0 +1,59 @@
+version: "3"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.7-alpine
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+    volumes:
+      - "./rabbitmq"
+
+  network-1:
+    build: ./convolution-network-microservice-1
+    volumes:
+      - "./convolution-network-microservice-1/app"
+    ports:
+      - "51166:51166"
+
+  network-2:
+    build: ./convolution-network-microservice-1
+    volumes:
+      - "./convolution-network-microservice-2/app"
+    ports:
+      - "51181:51181"
+
+  network-3:
+    build: ./convolution-network-microservice-1
+    volumes:
+      - "./convolution-network-microservice-3/app"
+    ports:
+      - "51194:51194"
+
+  network-4:
+    build: ./convolution-network-microservice-1
+    volumes:
+      - "./convolution-network-microservice-4/app"
+    ports:
+      - "51201:51201"
+
+  network-5:
+    build: ./convolution-network-microservice-1
+    volumes:
+      - "./convolution-network-microservice-5/app"
+    ports:
+      - "51208:51208"
+
+  springboot:
+    image: springboot:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./springboot"
+    depends_on:
+      - rabbitmq
+      - network-1
+      - network-2
+      - network-3
+      - network-4
+      - network-5

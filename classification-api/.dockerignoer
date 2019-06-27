@@ -1,0 +1,10 @@
+.idea
+.mvn
+src
+target
+.gitigonre
+classification-api.iml
+HELP.md
+mvnw
+mvnw.cmd
+pom.xml
